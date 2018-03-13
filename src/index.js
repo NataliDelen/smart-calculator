@@ -33,10 +33,13 @@ class SmartCalculator {
   counter(){
     let arr = this.arr;
 
-    while(arr.includes('^')){
-      let ind = arr.indexOf('^');
-      let res = Math.pow(arr[ind - 1],arr[ind + 1]);
-      arr.splice(ind-1,3,res);
+    for(let length = arr.length, i = length; i > -1; i--){
+      
+      if(arr[i] == '^'){
+        let res = Math.pow(arr[i - 1],arr[i + 1]);
+        arr.splice(i-1,3,res);
+      }
+      i--;
     }
 
      while(arr.includes('*')){
